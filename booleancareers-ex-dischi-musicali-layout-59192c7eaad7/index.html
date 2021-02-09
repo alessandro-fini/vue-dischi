@@ -14,13 +14,16 @@
         <div id="app">
           <header>
             <div class="container">
-                <img src="logo.png" alt="logo" />
+                <img src="logo.png" alt="logo">
+                <select v-model="selectedGenre" @click="genreFilter(selectedGenre)">
+                  <option v-for="item in genreArray">{{ item }}</option>
+                </select>
             </div>
           </header>
 
           <div class="cds-container container">
               <!-- Disco ad esempio -->
-              <div class="cd" v-for="(item, index) in cdArray">
+              <div class="cd" v-for="(item, index) in cdArray" v-if="item.visible">
                   <img :src="item.poster" alt="item.title">
                   <h3>{{ item.title }}</h3>
                   <span class="author">{{ item.author }}</span>
