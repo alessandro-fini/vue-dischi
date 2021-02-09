@@ -11,18 +11,14 @@ let app = new Vue ({
       .then((result) => {
         /* array completo */
         this.cdArray = result.data.response;
-        console.log(this.cdArray);
         /* array generi */
         this.cdArray.forEach((element) => {
           if (!this.genreArray.includes(element.genre)) {
             this.genreArray.push(element.genre);
-            console.log(this.genreArray);
           }
           /* inserimento proprietà visible in oggetti cdArray */
           element.visible = true;
         });
-
-        console.log(this.selectedGenre);
       })
       .catch((error) => {
         console.log(error);
